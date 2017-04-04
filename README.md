@@ -11,7 +11,7 @@ $ npm -g install ethereumjs-testrpc
 ```
 
 
-## Creating a new:
+## Creating a new app:
 
 ```sh
 $ embark new AppName
@@ -36,7 +36,7 @@ $ cd AppName
     |___ #contracts tests
 ```
 
-> run:
+> Run app:
 
 ```sh
 $ embark run
