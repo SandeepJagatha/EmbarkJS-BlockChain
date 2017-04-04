@@ -8,6 +8,10 @@
         $scope.expectMainAcc = [];
         $rootScope.title = "Transfer Funds";
         $scope.response = null;
+        $scope.transferForm = {
+            'recipient': '',
+            'amount': ''
+        };
 
         function _getAccountBalance(accountAddr) {
             var deferred = $q.defer();
@@ -102,9 +106,10 @@
 
         /////////
         $scope.doTransferFormSubmit = function () {
-            _sendCoin(Number($scope.coinbase.account), Number($scope.recipient), $scope.amount).then(function (response) {
+            _sendCoin(Number($scope.coinbase.account), Number($scope.transferForm.recipient), $scope.transferForm.amount).then(function (response) {
                     console.log(response);
                     $scope.response = response;
+                    $scope.transferForm = null;
                     return response;
                 },
                 function (reason) {

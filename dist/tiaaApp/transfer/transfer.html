@@ -5,12 +5,12 @@
                 <h4 class="title">Transfer Funds</h4>
             </div>
             <div class="content">
-                <form ng-submit="doTransferFormSubmit()">
+                <form name="trnsForm" novalidate ng-submit="trnsForm.$valid && doTransferFormSubmit()">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Recipient</label>
-                                <select class="form-control border-input" placeholder="Recipient" ng-model="recipient" name="recipient">
+                                <select class="form-control border-input" placeholder="Recipient" ng-model="transferForm.recipient" name="recipient" required>
                                     <option ng-repeat="acc in expectMainAcc" value="{{acc.account}}">{{acc.accountName}}</option>
                                 </select>
                             </div>
@@ -20,7 +20,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Amount</label>
-                                <input type="text" class="form-control border-input" placeholder="Amount" ng-model="amount" name="amount">
+                                <input type="text" class="form-control border-input" placeholder="Amount" ng-model="transferForm.amount" name="amount" required>
                             </div>
                         </div>
                     </div>
