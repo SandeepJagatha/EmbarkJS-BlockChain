@@ -1,0 +1,19 @@
+{
+  "name": "TiaaCoin",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "embark test"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "devDependencies": {
+    "embark": "^2.4.1",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "ipfs-api": "^14.0.0",
+    "web3": "^0.18.4"
+  }
+}

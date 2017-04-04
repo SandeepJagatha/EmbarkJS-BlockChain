@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Users Balance Table</h4>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="account in accounts">
+                            <td>{{$index}}</td>
+                            <td>{{account.accountName}}</td>
+                            <td>{{account.balance}} TC</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Users Balance Statistics</h4>
+                <p>Updates every 10 seconds </p>
+            </div>
+            <div class="content">
+
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-reload"></i> Updates every 10 seconds
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

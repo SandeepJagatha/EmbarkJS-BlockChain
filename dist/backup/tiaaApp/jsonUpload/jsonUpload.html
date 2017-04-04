@@ -1,0 +1,21 @@
+<section class="card register">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" fileread="uploadme">
+            <p class="help-block">Upload JSON file here...</p>
+            <button class="btn btn-default" ng-click="uploadFile()">Upload</button>
+            <br>
+            <br>
+            <a class="btn btn-default" href="{{fileLink}}" target="_blank" role="button" ng-if="fileLink">Download File</a>
+        </div>
+        <div class="col-md-8">
+            <div ng-if="fileLink">
+                <textarea class="form-control" rows="20" ng-model="$parent.prettyjsonData"></textarea>
+                <br>
+                <button class="btn btn-default" ng-click="go()">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

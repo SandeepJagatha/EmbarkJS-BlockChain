@@ -1,0 +1,20 @@
+<section class="artistpage">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Account</th>
+                <th>Name</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="account in accounts">
+                <th scope="row">{{$index}}</th>
+                <td>{{account.account}}</td>
+                <td>{{account.accountName}}</td>
+                <td>{{account.balance}} TC</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
