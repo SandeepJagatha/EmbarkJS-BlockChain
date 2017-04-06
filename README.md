@@ -11,7 +11,7 @@ $ npm -g install ethereumjs-testrpc
 ```
 
 
-## Creating a new:
+## Creating a new app:
 
 ```sh
 $ embark new AppName
@@ -36,7 +36,7 @@ $ cd AppName
     |___ #contracts tests
 ```
 
-> run:
+> Run app:
 
 ```sh
 $ embark run
@@ -54,21 +54,21 @@ generating 2048-bit RSA keypair...done
 peer identity: Qmcpo2iLBikrdf1d6QU6vXuNb6P7hwrbNPW9kLAH8eG67z
 to get started, enter:
 
-  ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
+$ ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 ```
 
 ```sh
-ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
+$ ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme
 ```
 
 ```sh
-ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/quick-start
+$ ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/quick-start
 ```
 
 > Going Online
 
 ```sh
-ipfs daemon
+$ ipfs daemon
 ```
 
 > open
