@@ -8,6 +8,25 @@
         $scope.expectMainAcc = [];
         $rootScope.title = "TIAA BlockChain";
 
+        $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
+        $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        $scope.data = [
+          [65, -59, 80, 81, -56, 55, -40],
+          [28, 48, -40, 19, 86, 27, 90]
+        ];
+        $scope.datasetOverride = [
+            {
+                label: "Balance",
+                borderWidth: 1,
+                type: 'bar'
+            },
+            {
+                label: "Deduction",
+                borderWidth: 1,
+                type: 'bar'
+            }
+        ];
+
         function _getAccountBalance(accountAddr) {
             var deferred = $q.defer();
 
@@ -24,6 +43,7 @@
 
             return deferred.promise;
         }
+
 
         function _getAccountBalances() {
             web3.eth.getAccounts(function (err, accs) {
@@ -69,6 +89,33 @@
                     $scope.expectMainAcc = accountsclone;
                 });
             });
+
+            var titles = [];
+            var balances = [];
+            $scope.accounts.forEach(function (arrayItem) {
+                console.log(arrayItem.balance);
+                titles.push(arrayItem.accountName);
+                balances.push(arrayItem.balance);
+            });
+
+
+            $scope.labels = titles;
+            $scope.data = [balances, [-220, -100, -40, -19, -86, -27, -90, -9, -23, -77]];
+
+
+            //            MetaCoin.Transfer({
+            //                fromBlock: "latest"
+            //            }).watch(function (error, result) {
+            //                // This will catch all Transfer events, regardless of how they originated.
+            //                console.log(result);
+            //                if (error == null) {
+            //                    console.log(result.args);
+            //                }
+            //            });
+
+            console.log(MetaCoin.Transfer({
+                fromBlock: "latest"
+            }));
         }
 
         const refreshBalances = () => {
@@ -82,5 +129,5 @@
             return refreshBalances
         }, 10000);
 
-    }]);
+                }]);
 })();

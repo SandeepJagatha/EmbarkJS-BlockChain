@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Users Balance Table</h4>
+                <p class="category">Updates every 10 seconds</p>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Account</th>
+                            <th>Name</th>
+                            <th>Balance</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="account in accounts">
+                            <td>{{$index}}</td>
+                            <td>{{account.account}}</td>
+                            <td>{{account.accountName}}</td>
+                            <td>{{account.balance}} TC</td>
+                            <td>Details</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
