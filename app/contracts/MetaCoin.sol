@@ -8,6 +8,8 @@ pragma solidity ^0.4.7;
 contract MetaCoin {
 	mapping (address => uint) balances;
     uint initial_balance = 10000;
+    
+    event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
 	function MetaCoin() {
 		balances[tx.origin] = initial_balance;
