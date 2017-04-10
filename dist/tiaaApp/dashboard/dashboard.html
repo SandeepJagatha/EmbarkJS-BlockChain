@@ -1,10 +1,11 @@
+<!--
 <div class="row">
     <div class="col-lg-4 col-md-5">
         <div class="card">
-            <div class="header">
+            <div class="header text-center">
                 <h4 class="title">Users Balance Table</h4>
             </div>
-            <div class="content table-responsive table-full-width">
+            <div class="content table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -27,7 +28,7 @@
     </div>
     <div class="col-lg-8 col-md-7">
         <div class="card">
-            <div class="header">
+            <div class="header text-center">
                 <h4 class="title">Users Balance Statistics</h4>
                 <p>Updates every 10 seconds </p>
             </div>
@@ -38,6 +39,41 @@
                     <hr>
                     <div class="stats">
                         <i class="ti-reload"></i> Updates every 10 seconds
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="">
+            <div class="card-header">
+                <h4 class="card-title panelTitle">Users Balance Statistics</h4>
+                <p class="category">Updates every 10 seconds</p>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <tbody>
+                                    <tr ng-repeat="account in accounts">
+                                        <td>{{$index}}</td>
+                                        <td>{{account.accountName}}</td>
+                                        <td>{{account.balance}} TC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-md-offset-1">
+                        <canvas id="base" class="chart-bar" chart-data="data" chart-labels="labels" chart-colors="colors" chart-dataset-override="datasetOverride">
+                        </canvas>
                     </div>
                 </div>
             </div>

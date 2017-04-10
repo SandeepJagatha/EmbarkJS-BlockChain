@@ -1,28 +1,43 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Users Balance Table</h4>
+        <div class="">
+            <div class="card-header">
+                <h4 class="card-title panelTitle">Users Balance Table</h4>
                 <p class="category">Updates every 10 seconds</p>
             </div>
-            <div class="content table-responsive table-full-width">
-                <table class="table table-striped">
+            <div class="card-content table-responsive table-full-width">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th class="text-center">#</th>
                             <th>Account</th>
                             <th>Name</th>
+                            <th>Admin</th>
                             <th>Balance</th>
-                            <th>Details</th>
+                            <th class="text-right">Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="account in accounts">
-                            <td>{{$index}}</td>
+                            <td class="text-center">{{$index}}</td>
                             <td>{{account.account}}</td>
                             <td>{{account.accountName}}</td>
+                            <td>
+                                <span class="text-success" ng-if="account.adminFlag" style="font-size: 18px;"><i class="ti-crown" ></i></span>
+                                <span ng-if="!account.adminFlag" style="font-size: 18px;"><i class="ti-user"></i></span>
+                            </td>
                             <td>{{account.balance}} TC</td>
-                            <td>Details</td>
+                            <td class="td-actions text-right">
+                                <a href="#" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="View Profile">
+
+                                </a>
+                                <a href="#" rel="tooltip" title="" class="btn btn-success btn-simple btn-xs" data-original-title="Edit Profile">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+                                <a href="#" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
