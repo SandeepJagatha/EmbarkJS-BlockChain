@@ -12649,7 +12649,7 @@ star {
 }
 
 .nav-tabs > li.active:before {
-    border-bottom: 11px solid #F1EAE0;
+    border-bottom: 11px solid #68b3c8;
     border-left: 11px solid transparent;
     border-right: 11px solid transparent;
     content: "";

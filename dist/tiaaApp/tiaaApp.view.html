@@ -28,7 +28,7 @@
             <li ng-class="{active: $state.includes('jsonUpload')}">
                 <a href="#/jsonUpload">
                     <i class="ti-upload"></i>
-                    <p>JSON Upload</p>
+                    <p>File Upload</p>
                 </a>
             </li>
             <li ng-class="{active: $state.includes('transfer')}">
@@ -75,7 +75,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#/login">Logout</a>
+                        <a href="#/login">
+                            <i class="ti-share"></i> Logout
+                        </a>
                     </li>
                 </ul>
 
@@ -111,7 +113,7 @@
                                 <div class="nav-tabs-wrapper">
                                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                                         <li ng-class="{active: tab === 1}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 1">Dashboard</a></li>
-                                        <li ng-class="{active: tab === 2}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 2">JSON Upload</a></li>
+                                        <li ng-class="{active: tab === 2}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 2">File Upload</a></li>
                                         <li ng-class="{active: tab === 3}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 3">Users</a></li>
                                         <li ng-class="{active: tab === 4}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 4">Transfer Fund</a></li>
                                     </ul>

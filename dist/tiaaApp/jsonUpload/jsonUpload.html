@@ -1,35 +1,45 @@
 <div class="row">
     <div class="col-lg-4 col-md-5">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Upload JSON file here</h4>
+        <div class="">
+            <div class="card-header">
+                <h4 class="card-title">Upload CSV file here</h4>
             </div>
-            <div class="content">
-                <input type="file" fileread="uploadme">
-                <br>
-                <div class="text-center">
-                    <button class="btn btn-info btn-fill btn-wd" ng-click="uploadFile()">Upload</button>
-                </div>
+            <div class="card-content">
+
+                <!--
+                <label class="btn btn-default btn-file">
+                    Browse
+                    <input type="file" fileread="uploadme" hidden>
+                </label>
+                -->
+
+                <label class="btn btn-primary" for="my-file-selector">
+                    <input id="my-file-selector" type="file" fileread="uploadme" style="display:none;" onchange="$('#upload-file-info').html($(this).val());"> Button CSV File
+                </label>
+                <span class="label label-info" id="upload-file-info"></span>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-info btn-fill btn-wd" ng-click="uploadFile()">Upload</button>
             </div>
         </div>
     </div>
     <div class="col-lg-8 col-md-7" ng-if="fileLink">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Review Payload</h4>
+        <div class="">
+            <div class="card-header">
+                <h4 class="card-title">Review Payload</h4>
             </div>
-            <div class="content">
+            <div class="card-content">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Uploaded Payload <small>(<a href="{{fileLink}}" target="_blank" role="button" ng-if="fileLink">Download File</a>)</small></label>
+                            <p class="category">Uploaded Payload <small>(<a href="{{fileLink}}" target="_blank" role="button" ng-if="fileLink">Download File</a>)</small></p>
                             <textarea rows="15" class="form-control border-input" ng-model="$parent.prettyjsonData"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-info btn-fill btn-wd" ng-click="go()">Submit</button>
-                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-info btn-fill btn-wd" ng-click="go()">Submit</button>
             </div>
         </div>
     </div>

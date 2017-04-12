@@ -188,8 +188,12 @@ myApp.run(['$q', '$rootScope', '$location', '$cookies', '$http', function ($q, $
     }
 
     web3.eth.getAccounts(function (err, accs) {
+        console.log(accs[0]);
         _setMainAccount(accs[0], 1000).then(function (response) {
             console.log(response);
+            console.log(response.transactionHash);
+            var info = web3.eth.getTransactionReceipt(response.transactionHash);
+            console.log(info);
             return response;
         }, function (reason) {
             alert('Failed: ' + reason);
