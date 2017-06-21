@@ -11,14 +11,14 @@
                         <label class="col-md-3 control-label">Recipient</label>
                         <div class="col-md-9">
                             <select class="form-control border-input" placeholder="Recipient" ng-model="transferForm.recipient" name="recipient" required>
-                                <option ng-repeat="acc in expectMainAcc" value="{{acc.account}}">{{acc.accountName}}</option>
+                                <option ng-repeat="acc in globals.exceptLoggedInUser" value="{{acc.account}}">{{acc.accountName}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Amount</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control border-input" placeholder="Amount" ng-model="transferForm.amount" name="amount" required ng-change="amountChange(transferForm.amount)">
+                            <input type="text" class="form-control border-input" placeholder="Amount" ng-model="transferForm.amount" name="amount" required>
                         </div>
                     </div>
                 </div>
@@ -33,40 +33,31 @@
             </form>
         </div>
 
-        <br>
-        <p ng-if="response" class="text-success">Transcation Successfull!</p>
     </div>
 
-    <div class="col-md-12" ng-if="response">
-        <div class="card card-plain">
-            <div class="header">
-                <h4 class="title">Transcation Details</h4>
+    <div class="col-lg-5 col-sm-8" ng-hide="true">
+        <div class="card card-circle-chart" data-background-color="blue">
+            <div class="card-header text-center">
+                <h5 class="card-title">Thank you!</h5>
+                <p class="description">Transcation Details</p>
             </div>
-            <div class="content table-responsive table-full-width">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>BlockHash</th>
-                            <th>BlockNumber</th>
-                            <th>Contract Address</th>
-                            <th>Cumulative Gas Used</th>
-                            <th>Gas Used</th>
-                            <th>Transcation Hash</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{response.blockHash}}</td>
-                            <td>{{response.blockNumber}}</td>
-                            <td>{{response.contractAddress}}</td>
-                            <td>{{response.cumulativeGasUsed}}</td>
-                            <td>{{response.gasUsed}}</td>
-                            <td>{{response.transactionHash}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            <div class="card-content" style="text-align: left;">
+                <dl class="dl-horizontal">
+                    <dt>BlockHash</dt>
+                    <dd>{{response.blockHash}}</dd>
+                    <dt>BlockNumber</dt>
+                    <dd>{{response.blockNumber}}</dd>
+                    <dt>Contract Address</dt>
+                    <dd>{{response.contractAddress}}</dd>
+                    <dt>Cumulative Gas Used</dt>
+                    <dd>{{response.cumulativeGasUsed}}</dd>
+                    <dt>Gas Used</dt>
+                    <dd>{{response.gasUsed}}</dd>
+                    <dt>Transcation Hash</dt>
+                    <dd>{{response.transactionHash}}</dd>
+                </dl>
             </div>
         </div>
     </div>
+
 </div>

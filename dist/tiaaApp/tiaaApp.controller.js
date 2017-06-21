@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('myApp').controller('TIAAappController', ['$scope', '$state', '$rootScope', '$q', function ($scope, $state, $rootScope, $q) {
+    angular.module('myApp').controller('TIAAappController', ['$scope', '$state', '$rootScope', '$q', 'sweetAlert', 'tiaaAppService', function ($scope, $state, $rootScope, $q, sweetAlert, tiaaAppService) {
         $scope.$state = $state;
         $rootScope.title = "TIAA COIN Dashboard";
         $scope.tab = 1;
@@ -9,7 +9,9 @@
         $rootScope.accounts = [];
         $rootScope.coinbase = {};
         $rootScope.expectMainAcc = [];
-        var userNames = ['Shizuko Olson', 'Marina Balser', 'Kenneth Ishmael', 'Kip Sum', 'Nadia Travis', 'Reatha Willimas', 'Gisele Peller', 'Rebeca Delreal', 'Mirella Denning', 'Rosita Abell'];
+        $rootScope.transferList = [];
+        var userNames = ['TIAA Account', 'Blandford, Scott', 'Haughey, Wayne', 'Sigal, Regina', 'Young, Micheal', 'Navduri, Rajesh', 'Hajara, Tasneem', 'Jagata, Satya', 'Mirella, Denning', 'Rosita, Abell'];
+        var flag = true;
 
         function _getAccountBalance(accountAddr) {
             var deferred = $q.defer();
@@ -31,13 +33,13 @@
         function _getAccountBalances() {
             web3.eth.getAccounts(function (err, accs) {
                 if (err != null) {
-                    alert('There was an error fetching your accounts.')
+                    console.log('There was an error fetching your accounts.')
                     console.error(err);
                     return
                 }
 
                 if (accs.length === 0) {
-                    alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
+                    console.log("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
                     return;
                 }
 
@@ -52,11 +54,22 @@
                             account, balance, accountName, userId, pwd, adminFlag
                         }
                     }, function (reason) {
-                        alert('Failed: ' + reason);
+                        console.log('Failed: ' + reason);
                     }, function (update) {
-                        alert('Got notification: ' + update);
+                        console.log('Got notification: ' + update);
                     });
                 });
+
+
+                if ($rootScope.globals.curentUserObj) {
+                    tiaaAppService.getAccountBalance(Number($rootScope.globals.curentUserObj.account)).then(function (balance) {
+                        $rootScope.globals.curentUserObj.balance = balance;
+                    }, function (reason) {
+                        console.log('Failed: ' + reason);
+                    }, function (update) {
+                        console.log('Got notification: ' + update);
+                    });
+                }
 
                 var accountsclone = [];
                 $q.all(accountsAndBalances).then((accountsAndBalances) => {
@@ -66,12 +79,18 @@
                     accountsAndBalances[0].userId = "admin";
                     accountsAndBalances[0].pwd = "admin";
                     accountsAndBalances[0].adminFlag = true;
+
                     accountsclone = accountsAndBalances.slice();
                     accountsclone.shift();
                     //
+                    if (flag) {
+                        $rootScope.transferList = accountsclone;
+                        flag = false;
+                    }
                     $rootScope.accounts = accountsAndBalances;
                     $rootScope.coinbase = accountsAndBalances[0];
                     $rootScope.expectMainAcc = accountsclone;
+
                 });
             });
         }

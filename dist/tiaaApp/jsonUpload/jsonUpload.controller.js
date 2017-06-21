@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('myApp').controller('JsonUploadController', ['$scope', 'Upload', '$http', '$timeout', '$q', '$rootScope', function ($scope, Upload, $http, $timeout, $q, $rootScope) {
+    angular.module('myApp').controller('JsonUploadController', ['$scope', 'Upload', '$http', '$timeout', '$q', '$rootScope', 'sweetAlert', 'tiaaAppService', function ($scope, Upload, $http, $timeout, $q, $rootScope, sweetAlert, tiaaAppService) {
 
         EmbarkJS.Storage.setProvider('ipfs', {
             server: 'localhost',
@@ -131,6 +131,43 @@
                 console.log(hash);
                 EmbarkJS.Storage.get(hash).then(function (content) {
                     $scope.fileHash = hash;
+
+                    var url = EmbarkJS.Storage.getUrl(hash);
+                    $http({
+                        method: 'JSONP',
+                        url: url
+                    }).
+                    success(function (data) {
+                        console.log(data);
+                    }).
+                    error(function (data) {
+                        console.log(data);
+                    });
+
+
+                    var json1 = [
+                        {
+                            type: "timesheet",
+                            to: $rootScope.accounts[1].accountName,
+                            address: $rootScope.accounts[1].account
+                        },
+                        {
+                            type: "timesheet",
+                            to: $rootScope.accounts[2].accountName,
+                            address: $rootScope.accounts[2].account
+                        },
+                        {
+                            type: "timesheet",
+                            to: $rootScope.accounts[3].accountName,
+                            address: $rootScope.accounts[3].account
+                        }
+                    ];
+                    var prettyjsonobj1 = JSON.stringify(json1, undefined, 4);
+                    $scope.prettyjsonData = prettyjsonobj1;
+
+
+
+
                     $http.get(EmbarkJS.Storage.getUrl(hash)).success(function (data) {
                         $scope.jsonData = data;
 
@@ -162,18 +199,27 @@
             console.log(JSON.parse($scope.prettyjsonData));
 
             for (let obj of JSON.parse($scope.prettyjsonData)) {
-                _sendCoins(Number($scope.baseAcc), Number(obj.to), obj.type).then(function (response) {
+                _sendCoins(Number($scope.baseAcc), Number(obj.address), obj.type).then(function (response) {
                         console.log(response);
                         return response;
                     },
                     function (reason) {
-                        alert('Failed: ' + reason);
+                        console.log('Failed: ' + reason);
                     },
                     function (update) {
-                        alert('Got notification: ' + update);
+                        console.log('Got notification: ' + update);
                     });
 
             }
+            sweetAlert.success("Transaction Successful!", "Thank you");
+
+            tiaaAppService.getAccountBalance(Number($rootScope.globals.curentUserObj.account)).then(function (balance) {
+                $rootScope.globals.curentUserObj.balance = balance;
+            }, function (reason) {
+                console.log('Failed: ' + reason);
+            }, function (update) {
+                console.log('Got notification: ' + update);
+            });
         }
 
     }]);

@@ -50,10 +50,6 @@
 </div>
 
 
-
-
-
-
 <div class="main-panel">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -98,7 +94,7 @@
                                         <p class="category">Welcome</p>
                                     </div>
                                 </div>
-                                <div class="col-xs-5">
+                                <div class="col-xs-5" ng-if="!globals.curentUserObj.adminFlag">
                                     <div class="pull-right">
                                         <div class="numbers text-success">
                                             <p>Balance</p>
@@ -116,6 +112,8 @@
                                         <li ng-class="{active: tab === 2}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 2">File Upload</a></li>
                                         <li ng-class="{active: tab === 3}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 3">Users</a></li>
                                         <li ng-class="{active: tab === 4}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 4">Transfer Fund</a></li>
+                                        <li ng-class="{active: tab === 5}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 5">File Storage</a></li>
+                                        <li ng-class="{active: tab === 6}"><a href="javascript:void(0);" data-toggle="tab" ng-click="tab = 6">Auditor View</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -131,6 +129,12 @@
                                 </div>
                                 <div class="tab-pane" id="transfer" ng-show="tab === 4" ng-class="{active: tab === 4}">
                                     <span ui-view="transfer"></span>
+                                </div>
+                                <div class="tab-pane" id="fileStorage" ng-show="tab === 5" ng-class="{active: tab === 5}">
+                                    <span ui-view="fileStorage"></span>
+                                </div>
+                                <div class="tab-pane" id="auditorView" ng-show="tab === 6" ng-class="{active: tab === 6}">
+                                    <span ui-view="auditorView"></span>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +178,7 @@
                 ©
                 <script>
                     document.write(new Date().getFullYear())
-                </script>2017, made with <i class="fa fa-heart heart"></i> by <a href="#">SJ</a>
+                </script>2017, made by <a href="#">SJ</a>
             </div>
         </div>
     </footer>

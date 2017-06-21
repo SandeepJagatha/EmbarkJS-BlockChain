@@ -1,3 +1,9 @@
 .card .card-content .card-title.panelTitle {
     margin: 0px;
 }
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    color: #3abfef;
+}

@@ -14,7 +14,7 @@
                 -->
 
                 <label class="btn btn-primary" for="my-file-selector">
-                    <input id="my-file-selector" type="file" fileread="uploadme" style="display:none;" onchange="$('#upload-file-info').html($(this).val());"> Button CSV File
+                    <input id="my-file-selector" type="file" fileread="uploadme" style="display:none;" onchange="$('#upload-file-info').html($(this).val());"> Choose CSV File
                 </label>
                 <span class="label label-info" id="upload-file-info"></span>
             </div>
@@ -33,7 +33,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <p class="category">Uploaded Payload <small>(<a href="{{fileLink}}" target="_blank" role="button" ng-if="fileLink">Download File</a>)</small></p>
-                            <textarea rows="15" class="form-control border-input" ng-model="$parent.prettyjsonData"></textarea>
+                            <textarea rows="20" class="form-control border-input" ng-model="$parent.prettyjsonData"></textarea>
                         </div>
                     </div>
                 </div>

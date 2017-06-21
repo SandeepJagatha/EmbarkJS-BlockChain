@@ -5,15 +5,27 @@
     <meta charset="UTF-8">
     <title> TIAA COIN DEMO</title>
 
+
     <!--
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+-->
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/datetimepicker.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <script type="text/javascript" src="lib/dateTimerPicker/js/moment.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <!--    <script src="lib/angular/angular.min.js"></script>-->
     <!--    <script src="lib/angular/angular-route.min.js"></script>-->
     <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -22,16 +34,29 @@
     <script src="lib/angular/ng-file-upload-shim.js"></script>
     <script src="lib/angular/ng-file-upload.js"></script>
 
+
+    <script src="lib/sweetalert2.js"></script>
+
     <!--
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
--->
+    -->
 
-    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="lib/dateTimerPicker/js/datetimepicker.js"></script>
+    <script type="text/javascript" src="lib/dateTimerPicker/js/datetimepicker.templates.js"></script>
+
     <script src="lib/chart.js/dist/Chart.min.js"></script>
     <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
-
     <script src="//code.angularjs.org/1.4.0/angular-cookies.js"></script>
+
+
+    <!--
+
+    <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+-->
+
 
     <script src="https://unpkg.com/ipfs-api/dist/index.js"></script>
 
@@ -43,6 +68,7 @@
     <script src="tiaaApp/services/flash.service.js"></script>
     <script src="tiaaApp/services/user.service.js"></script>
     <script src="tiaaApp/services/user.service.local-storage.js"></script>
+    <script src="tiaaApp/services/sweetalert.service.js"></script>
 
     <script src="tiaaApp/tiaaApp.controller.js"></script>
     <script src="tiaaApp/jsonUpload/jsonUpload.controller.js"></script>
@@ -50,6 +76,8 @@
     <script src="tiaaApp/transfer/transfer.controller.js"></script>
     <script src="tiaaApp/dashboard/dashboard.controller.js"></script>
     <script src="tiaaApp/login/login.controller.js"></script>
+    <script src="tiaaApp/fileStorage/fileStorage.controller.js"></script>
+    <script src="tiaaApp/auditorView/auditorView.controller.js"></script>
 
 </head>
 

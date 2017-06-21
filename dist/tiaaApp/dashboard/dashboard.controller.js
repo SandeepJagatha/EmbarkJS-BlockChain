@@ -60,10 +60,9 @@
         //                }
         //            });
 
-        console.log(MetaCoin.Transfer({
-            fromBlock: "latest"
-        }));
-
+//        console.log(MetaCoin.Transfer({
+                //            fromBlock: "latest"
+                //        }));
 
     }]);
 })();

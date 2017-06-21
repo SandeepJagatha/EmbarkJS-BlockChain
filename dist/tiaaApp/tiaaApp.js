@@ -1,6 +1,37 @@
-var myApp = angular.module('myApp', ['ui.router', 'ngFileUpload', 'chart.js', 'ngCookies']);
+angular
+    .module('myApp', ['ui.router', 'ngFileUpload', 'chart.js', 'ngCookies', 'ui.bootstrap.datetimepicker'])
+    .factory('responseObserver', function responseObserver($q, $window) {
+        return {
+            'responseError': function (errorResponse) {
+                switch (errorResponse.status) {
+                case 403:
+                    $window.location = './403.html';
+                    break;
+                case 500:
+                    $window.location = './500.html';
+                    break;
+                }
+                return $q.reject(errorResponse);
+            }
+        };
+    })
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('responseObserver');
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.get = {};
+        $httpProvider.defaults.headers.patch = {};
+    });
+
+
+
+
+
+var myApp = angular.module('myApp');
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
+
     console.log("app config");
 
     (function (ChartJsProvider) {
@@ -131,6 +162,14 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
                 'transfer@dashboard': {
                     templateUrl: 'tiaaApp/transfer/transfer.html',
                     controller: 'TransferController',
+                },
+                'fileStorage@dashboard': {
+                    templateUrl: 'tiaaApp/fileStorage/fileStroage.html',
+                    controller: 'FileStorageController',
+                },
+                'auditorView@dashboard': {
+                    templateUrl: 'tiaaApp/auditorView/auditorView.html',
+                    controller: 'AuditorViewController',
                 }
             }
         });
@@ -160,14 +199,33 @@ myApp.directive("fileread", [function () {
     }
 }]);
 
+//myApp.directive('datetimez', function () {
+//    return {
+//        restrict: 'A',
+//        require: 'ngModel',
+//        link: function (scope, element, attrs, ngModelCtrl) {
+//            element.datetimepicker({
+//                dateFormat: 'dd-MM-yyyy',
+//                language: 'en',
+//                pickTime: false,
+//                startDate: '01-11-2013', // set a minimum date
+//                endDate: '01-11-2030' // set a maximum date
+//            }).on('changeDate', function (e) {
+//                ngModelCtrl.$setViewValue(e.date);
+//                scope.$apply();
+//            });
+//        }
+//    };
+//
+//});
+//
 
 
 
 
 
 
-
-myApp.run(['$q', '$rootScope', '$location', '$cookies', '$http', function ($q, $rootScope, $location, $cookies, $http) {
+myApp.run(['$q', '$rootScope', '$location', '$cookies', '$http', 'tiaaAppService', function ($q, $rootScope, $location, $cookies, $http, tiaaAppService) {
     console.log("app run");
 
     function _setMainAccount(accountAddr, amount) {
@@ -190,15 +248,31 @@ myApp.run(['$q', '$rootScope', '$location', '$cookies', '$http', function ($q, $
     web3.eth.getAccounts(function (err, accs) {
         console.log(accs[0]);
         _setMainAccount(accs[0], 1000).then(function (response) {
+
+
+
+            tiaaAppService.getAccountBalance(Number(accs[0])).then(function (balance) {
+                if ($rootScope.globals.curentUserObj) {
+                    $rootScope.globals.curentUserObj.balance = balance;
+                }
+            }, function (reason) {
+                console.log('Failed: ' + reason);
+            }, function (update) {
+                console.log('Got notification: ' + update);
+            });
+
+
+
+
             console.log(response);
             console.log(response.transactionHash);
             var info = web3.eth.getTransactionReceipt(response.transactionHash);
             console.log(info);
             return response;
         }, function (reason) {
-            alert('Failed: ' + reason);
+            console.log('Failed: ' + reason);
         }, function (update) {
-            alert('Got notification: ' + update);
+            console.log('Got notification: ' + update);
         });
     });
 

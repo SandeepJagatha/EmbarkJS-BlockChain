@@ -14,10 +14,11 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-bootstrap-datetimepicker": "^1.1.4",
     "angular-chart.js": "^1.1.1",
     "angular-chartist.js": "^4.3.1",
     "chartist": "^0.10.1",
-    "ipfs-api": "^14.0.0",
+    "ipfs-api": "^14.0.3",
     "web3": "^0.18.4"
   }
 }

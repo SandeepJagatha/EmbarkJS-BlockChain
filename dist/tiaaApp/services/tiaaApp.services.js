@@ -52,13 +52,13 @@
                 var accountsAndBalances = [];
                 web3.eth.getAccounts(function (err, accs) {
                     if (err != null) {
-                        alert('There was an error fetching your accounts.')
+                        console.log('There was an error fetching your accounts.')
                         console.error(err);
                         return;
                     }
 
                     if (accs.length === 0) {
-                        alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
+                        console.log("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
                         return;
                     }
 
@@ -73,9 +73,9 @@
                                 account, balance, accountName
                             }
                         }, function (reason) {
-                            alert('Failed: ' + reason);
+                            console.log('Failed: ' + reason);
                         }, function (update) {
-                            alert('Got notification: ' + update);
+                            console.log('Got notification: ' + update);
                         });
                     });
 

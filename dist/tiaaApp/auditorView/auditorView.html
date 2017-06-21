@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="">
+
+            <form class="form-horizontal">
+                <div class="card-header">
+                    <h4 class="card-title">Select Data Range</h4>
+                </div>
+                <div class="card-content">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Request type </label>
+                        <div class="col-md-9">
+                            <select class="form-control" ng-model="rtq">
+                                <option value="RTQ">RTQ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Start Date </label>
+                        <div class="col-md-9">
+                            <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);">
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" data-ng-model="dateRangeStart">
+                                    <span class="input-group-addon"><i class="ti-calendar"></i></span>
+                                </div>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="dateRangeStart" data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }" data-on-set-time="startDateOnSetTime()" data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">End Date</label>
+                        <div class="col-md-9">
+                            <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);">
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" data-ng-model="dateRangeEnd">
+                                    <span class="input-group-addon"><i class="ti-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="dateRangeEnd" data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }" data-on-set-time="endDateOnSetTime()" data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="card-footer">
+                    <div class="form-group">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <button type="submit" class="btn btn-fill btn-info" ng-click="getRecordsByDateRange()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div ng-if="fildataArr.length == 0" class="col-md-5 col-md-offset-1">
+        <div class="">
+            <div class="card-header">
+                <h4 class="card-title">{{selectedRequestType}} Records</h4>
+            </div>
+            <div class="card-content">
+                <p class="text-warning">No records found.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 col-md-offset-1" ng-if="fildataArr.length > 0">
+        <div class="card-header">
+            <h4 class="card-title">{{selectedRequestType}} Records</h4>
+        </div>
+        <div class="card-content table-responsive table-full-width table-bordered">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center text-info">#</th>
+                        <th class="text-info">Date</th>
+                        <th class="text-info">Details</th>
+                        <th class="text-center text-info">Document</th>
+                        <th class="text-center text-info">Video</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in fildataArr">
+                        <td class="text-center">{{$index}}</td>
+                        <td>{{account[0] | date:'medium' }}</td>
+                        <td>{{account[1]}}</td>
+                        <td class="text-center"><a class="btn btn-simple btn-warning btn-icon edit" href="http://localhost:8080/ipfs/Qmb2ifKXSiR2DtPWtRUPtjF6MTsR4QjcdcV7pkUBzSfNZw" target="_blank"><i class="ti-clipboard"></i></a></td>
+                        <td class="text-center"><a class="btn btn-simple btn-warning btn-icon edit" href="http://localhost:8080/ipfs/QmTkkPxVfpFBKyqGUS93Q9A4eyXdysRAR7JNoLkg76CU51" target="_blank"><i class="ti-video-camera"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+[
+    {
+        type: "KBA",
+        name: "Michael Jackson",
+        pin: "1234567",
+        questionaire: [
+            {
+                question1: "Question1",
+                answer1: "Option A"
+            },
+            {
+                question1: "Question2",
+                answer1: "Option D"
+            },
+            {
+                question1: "Question3",
+                answer1: "Option C"
+            },
+            {
+                question1: "Question4",
+                answer1: "Option B"
+            },
+            {
+                question1: "Question5",
+                answer1: "Option C"
+            }
+        ]
+    },
+    {
+        type: "KBA",
+        name: "Demi lavato",
+        pin: "1111111",
+        questionaire: [
+            {
+                question1: "Question1",
+                answer1: "Option A"
+            },
+            {
+                question1: "Question2",
+                answer1: "Option D"
+            },
+            {
+                question1: "Question3",
+                answer1: "Option C"
+            },
+            {
+                question1: "Question4",
+                answer1: "Option B"
+            },
+            {
+                question1: "Question5",
+                answer1: "Option C"
+            }
+        ]
+    },
+    {
+        type: "KBA",
+        name: "Adele",
+        pin: "7654321",
+        questionaire: [
+            {
+                question1: "Question1",
+                answer1: "Option A"
+            },
+            {
+                question1: "Question2",
+                answer1: "Option D"
+            },
+            {
+                question1: "Question3",
+                answer1: "Option C"
+            },
+            {
+                question1: "Question4",
+                answer1: "Option B"
+            },
+            {
+                question1: "Question5",
+                answer1: "Option C"
+            }
+        ]
+    }
+]

@@ -73,12 +73,22 @@
         function SetCredentials(username, password) {
             var authdata = Base64.encode(username + ':' + password);
 
+            var index = $rootScope.accounts.indexOf($rootScope.userLoggedIn);
+            var accountsClone = angular.copy($rootScope.accounts);
+            accountsClone.splice(index, 1);
+
+            if ($rootScope.userLoggedIn.accountName != 'TIAA Account') {
+                var partsOfStr = $rootScope.userLoggedIn.accountName.split(',');
+                $rootScope.userLoggedIn.accountName = partsOfStr[1];
+            }
+
             $rootScope.globals = {
                 currentUser: {
                     username: username,
                     authdata: authdata
                 },
-                curentUserObj: $rootScope.userLoggedIn
+                curentUserObj: $rootScope.userLoggedIn,
+                exceptLoggedInUser: accountsClone
             };
 
             // set default auth header for http requests
